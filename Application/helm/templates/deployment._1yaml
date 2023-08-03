@@ -1,7 +1,6 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-# set your lab user name
   name: {{ .Release.Name }}-1
   annotations:
     argocd.argoproj.io/sync-wave: '5'
@@ -9,12 +8,10 @@ spec:
   replicas: {{ .Values.ReplicaNumber }}
   selector:
     matchLabels:
-# set your lab user name
       app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-# set your lab user name
         app: {{ .Release.Name }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/ConfigMap.yaml") . | sha256sum }}
