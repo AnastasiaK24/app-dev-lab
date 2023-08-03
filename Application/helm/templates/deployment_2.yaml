@@ -27,7 +27,7 @@ metadata:
       containers:
         - resources: {}
           terminationMessagePath: /dev/termination-log
-          name: {{ .Release.Name }}
+          name: hello-world
           volumeMounts:
           - name: index-html
             mountPath: {{ .Values.volume.mount.path }}
