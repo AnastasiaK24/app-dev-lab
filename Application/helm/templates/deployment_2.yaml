@@ -15,7 +15,7 @@ metadata:
     metadata:
       labels:
 # set your lab user name
-        app2: '{{ .Release.Name }}-2'
+        app: '{{ .Release.Name }}-2'
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/ConfigMap.yaml") . | sha256sum }}
     spec:
