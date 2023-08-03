@@ -34,13 +34,13 @@ spec:
               path: {{ .Values.probes.readinessPath }}
               port: {{ .Values.containers.containerPort }}
               scheme: HTTP
-            {{- tpl (toYaml .Values.probes.readiness) . | nindent 12 }}
+{{- tpl (toYaml .Values.probes.readiness) . | nindent 12 }}
           livenessProbe:
             httpGet:
               path: {{ .Values.probes.livenessPath }}
               port: {{ .Values.containers.containerPort }}
               scheme: HTTP
-            {{- tpl (toYaml .Values.probes.liveness) . | nindent 12 }}
+{{- tpl (toYaml .Values.probes.liveness) . | nindent 12 }}
           env:
             - name: PORT
               value: {{ .Values.containers.containerPort | quote }}
