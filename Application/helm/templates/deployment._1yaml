@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
 # set your lab user name
-      app: '{{ .Release.Name }}-1'
+      app1: '{{ .Release.Name }}-1'
   template:
     metadata:
       labels:
