@@ -31,11 +31,13 @@ spec:
             mountPath: {{ .Values.volume.mount.path }}
           readinessProbe:
             httpGet:
+              path: {{ .Values.probes.readinessPath }}
               port: {{ .Values.containers.containerPort }}
               scheme: HTTP
             {{- tpl (toYaml .Values.probes.readiness) . | nindent 12 }}
           livenessProbe:
             httpGet:
+              path: {{ .Values.probes.livenessPath }}
               port: {{ .Values.containers.containerPort }}
               scheme: HTTP
             {{- tpl (toYaml .Values.probes.liveness) . | nindent 12 }}
