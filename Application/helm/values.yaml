@@ -6,7 +6,7 @@ containers:
   tag: 'chart_v1'
 
 service:
-  servicePort: '8080'
+  servicePort: 8080
 
 probes:
   readinessPath: '/health/readiness'
