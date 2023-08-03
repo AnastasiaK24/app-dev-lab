@@ -31,18 +31,12 @@ spec:
             httpGet:
               port: {{ .Values.containers.containerPort }}
               scheme: HTTP
-            # tpl exmaple
             {{- tpl (toYaml .Values.probes.readiness) . | nindent 12 }}
           livenessProbe:
             httpGet:
-              path: {{ .Values.probes.liveness.path }}
               port: {{ .Values.containers.containerPort }}
               scheme: HTTP
-            initialDelaySeconds: {{ .Values.probes.liveness.initialDelaySeconds }}
-            timeoutSeconds: {{ .Values.probes.liveness.timeoutSeconds }}
-            periodSeconds: {{ .Values.probes.liveness.periodSeconds }}
-            successThreshold: {{ .Values.probes.liveness.successThreshold }}
-            failureThreshold: {{ .Values.probes.liveness.failureThreshold }}
+            {{- tpl (toYaml .Values.probes.liveness) . | nindent 12 }}
           env:
             - name: PORT
               value: {{ .Values.containers.containerPort | quote }}
