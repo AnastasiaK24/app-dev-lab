@@ -24,7 +24,7 @@ spec:
       containers:
         - resources: {}
           terminationMessagePath: /dev/termination-log
-          name: {{ .Release.Name }}
+          name: {{ .Release.Name }}-2
           volumeMounts:
           - name: index-html
             mountPath: {{ .Values.volume.mount.path }}

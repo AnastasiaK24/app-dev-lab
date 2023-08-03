@@ -24,7 +24,7 @@ spec:
       containers:
         - resources: {}
           terminationMessagePath: /dev/termination-log
-          name: {{ .Release.Name }}
+          name: {{ .Release.Name }}-1
           volumeMounts:
           - name: index-html
             mountPath: {{ .Values.volume.mount.path }}
@@ -47,7 +47,6 @@ spec:
             - containerPort: {{ .Values.containers.containerPort }}
               protocol: TCP
           imagePullPolicy: IfNotPresent
-# update with the image you build in part 1
           image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
