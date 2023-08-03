@@ -32,7 +32,7 @@ spec:
               path: {{ .Values.probes.readiness.path }}
               scheme: HTTP
             # tpl exmaple
-            {{- tpl (toYaml .Values.Probes.readiness) . | nindent 12 }}
+            {{- tpl (toYaml .Values.probes.readiness) . | nindent 12 }}
           livenessProbe:
             httpGet:
               path: {{ .Values.probes.liveness.path }}
