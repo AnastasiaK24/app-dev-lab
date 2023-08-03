@@ -29,7 +29,7 @@ spec:
             mountPath: {{ .Values.volume.mount.path }}
           readinessProbe:
             httpGet:
-              path: {{ .Values.probes.readiness.path }}
+              port: {{ .Values.containers.containerPort }}
               scheme: HTTP
             # tpl exmaple
             {{- tpl (toYaml .Values.probes.readiness) . | nindent 12 }}
