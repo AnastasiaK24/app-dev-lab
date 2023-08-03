@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
 # set your lab user name
-  name: {{ .Release.Name }}-2
+  name: '{{ .Release.Name }}-2'
   annotations:
     argocd.argoproj.io/sync-wave: '10'
   spec:
@@ -10,12 +10,12 @@ metadata:
   selector:
     matchLabels:
 # set your lab user name
-      app2: {{ .Release.Name }}-2
+      app2: '{{ .Release.Name }}-2'
   template:
     metadata:
       labels:
 # set your lab user name
-        app2: {{ .Release.Name }}-2
+        app2: '{{ .Release.Name }}-2'
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/ConfigMap.yaml") . | sha256sum }}
     spec:
@@ -27,7 +27,7 @@ metadata:
       containers:
         - resources: {}
           terminationMessagePath: /dev/termination-log
-          name: {{ .Release.Name }}-2
+          name: '{{ .Release.Name }}-2'
           volumeMounts:
           - name: index-html
             mountPath: {{ .Values.volume.mount.path }}
