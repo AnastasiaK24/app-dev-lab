@@ -28,9 +28,9 @@ volume:
   mount:
     path: /tmp/html
 
-test: Healthy
+test: Null
 
 github:
   user: AnastasiaK24
   token: empty-pass
-  url: <https://api.github.com/repos/AnastasiaK24/app-dev-lab/issues>
+  url: 'https://api.github.com/repos/AnastasiaK24/app-dev-lab/issues'
