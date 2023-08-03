@@ -1,7 +1,6 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-# set your lab user name
   name: {{ .Release.Name }}-2
   annotations:
     argocd.argoproj.io/sync-wave: '10'
@@ -9,12 +8,10 @@ metadata:
   replicas: {{ .Values.ReplicaNumber }}
   selector:
     matchLabels:
-# set your lab user name
       app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-# set your lab user name
         app: {{ .Release.Name }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/ConfigMap.yaml") . | sha256sum }}
@@ -27,7 +24,7 @@ metadata:
       containers:
         - resources: {}
           terminationMessagePath: /dev/termination-log
-          name: hello-world
+          name: {{ .Release.Name }}
           volumeMounts:
           - name: index-html
             mountPath: {{ .Values.volume.mount.path }}
@@ -50,7 +47,6 @@ metadata:
             - containerPort: {{ .Values.containers.containerPort }}
               protocol: TCP
           imagePullPolicy: IfNotPresent
-# update with the image you build in part 1
           image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
